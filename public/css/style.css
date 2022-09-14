@@ -1,0 +1,135 @@
+body {
+    /* background-color: rgb(240, 239, 239); */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/webbg.jpg');
+}
+
+@media only screen and (max-width: 980px) {
+    #hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/webbg.jpg');
+    }
+    #hero {
+        background-repeat: no-repeat !important;
+    }
+    #hero {
+        background-size: 400%;
+    }
+    #hero {
+        background-position: center !important;
+    }
+}
+
+.is-invalid input, .is-invalid select {
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(241, 51, 51) !important;
+    /* padding: 3px 0px 3px 3px; */
+    border: 1px solid rgba(241, 51, 51) !important;
+}
+
+.errspan  {
+    font-size: 0.8em;
+    color: rgb(250, 0, 0);
+}
+
+.card {
+    /* box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2); */
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(8px);
+}
+
+._auth label {
+    color: #dfdfdf;
+}
+
+.btn-primary {
+    margin-top: 2%;
+    width: 100%;
+    padding: 2%;
+    border: none;
+    cursor: pointer;
+}
+
+
+.ok-close-btn {
+    background-color: deepskyblue;
+    color: #fff;
+    padding: 2% 4% 2% 4%;
+}
+
+.ok-close-btn:hover {
+    background-color: rgb(41, 201, 255);
+    color: #fff;
+}
+
+.index-btn {
+    padding: 1.5%;
+    cursor: pointer;
+    border: 2px solid #dfdfdf;
+    border-radius: 0px;
+    color: #dfdfdf;
+    transition: all 0.5s;
+}
+
+.index-btn:hover {
+    background-color: #dfdfdf;
+    transition: all 0.5s;
+}
+
+.navbar {
+    background: rgba(0,0,0,0.5);
+}
+
+.msgclosebtn {
+    cursor: pointer;
+}
+
+.login-form {
+    position: relative;
+}
+
+.login-form input { text-indent: 25px;}
+
+.login-form .prepend{ 
+  position: absolute;
+  top: 39px;
+  left: 10px;
+}
+
+.modal-content {
+    box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.5);
+}
+
+.male {
+    background-color: lightblue;
+}
+
+.female {
+    background-color: lightpink;
+}
+
+.dashcon {
+    -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3);
+}
+
+.usercard {
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    transition: all linear 200ms;
+}
+
+.usercard:hover {
+    transform: scale(1.1);
+    transition: all linear 200ms;
+    z-index: 1;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+    cursor: pointer;
+}

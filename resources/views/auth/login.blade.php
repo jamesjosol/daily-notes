@@ -11,10 +11,10 @@
 
                 <div class="card-body">
                     {!! Form::open(['url'=>'/login', 'method'=>'post']) !!}
-                        <div class="form-group _auth @error('email') is-invalid @enderror">
-                            {!! Form::label('email','<i class="fas fa-at"></i> Email',[],false) !!}
-                            {!! Form::text('email', null, ['class'=>'form-control' .  ($errors->has('email') ? ' is-invalid' : null)]) !!}
-                            <span class="errspan" id="errspan">{{ $errors->first('email') }}</span>
+                        <div class="form-group _auth @error('username') is-invalid @enderror">
+                            {!! Form::label('username','<i class="fas fa-user"></i> Username',[],false) !!}
+                            {!! Form::text('username', null, ['class'=>'form-control' .  ($errors->has('username') ? ' is-invalid' : null)]) !!}
+                            <span class="errspan" id="errspan">{{ $errors->first('username') }}</span>
                         </div> 
                         <div class="form-group _auth @error('password') is-invalid @enderror">
                             {!! Form::label('password', '<i class="fas fa-key"></i> Password',[],false) !!}
@@ -22,7 +22,7 @@
                             <span class="errspan" id="errspan">{{ $errors->first('password') }}</span>
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" id="actionBtn" onclick="btnload('Logging in...')" type="submit"><i class="fas fa-sign-in"></i> Login</button>
+                            <button class="btn btn-primary" id="actionBtn" onclick="btnload('Logging in...')" type="submit"><i class="fas fa-sign-in-alt"></i>  Login</button>
                         </div>
                     {!! Form::close() !!}
                 </div>

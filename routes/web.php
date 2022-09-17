@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('pages.index');
+});
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    
+    Route::get('/dashboard', [NoteController::class, 'index'])->name('dashboard');
+
+    Route::get('/new', [NoteController::class, 'newNote'])->name('new');
+
+    Route::post('/new', [NoteController::class, 'storeNote'])->name('store');
+
+    Route::get('/note/{note}', [NoteController::class, 'openNote'])->name('open')->middleware('isNoteOwner');
+
+    Route::patch('/note/{note}', [NoteController::class, 'updateNote'])->name('updateNote');
+
+    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+});

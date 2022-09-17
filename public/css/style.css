@@ -27,7 +27,7 @@ body {
 
 .errspan  {
     font-size: 0.8em;
-    color: rgb(250, 0, 0);
+    color: rgb(255, 97, 97);
 }
 
 .card {
@@ -40,14 +40,6 @@ body {
 
 ._auth label {
     color: #dfdfdf;
-}
-
-.btn-primary {
-    margin-top: 2%;
-    width: 100%;
-    padding: 2%;
-    border: none;
-    cursor: pointer;
 }
 
 
@@ -113,23 +105,48 @@ body {
     box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.3);
 }
 
-.usercard {
-    border-radius: 8px;
-    border: 1px solid #cccccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    box-sizing: border-box;
-    width: 200px;
-    height: 200px;
-    transition: all linear 200ms;
+#toast-container>.custom-success {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==") !important;
+    background-color: #28a745;
 }
 
-.usercard:hover {
-    transform: scale(1.1);
-    transition: all linear 200ms;
-    z-index: 1;
-    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+#toast-container>.notice {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==") !important;
+    background-color: #28a745;
+}
+
+
+.table-row {
     cursor: pointer;
+}
+
+.theadstyle {
+    background-color: #292929;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:6px;
+    font-size: 1.7em;
+}
+
+.search-box-prepend, .search-box {
+  background-color: #292929;
+  color: #dfdfdf;
+}
+
+.prepend input[type=text]:focus {
+    color: #dfdfdf;
+    background-color: #4e4e4e;
 }

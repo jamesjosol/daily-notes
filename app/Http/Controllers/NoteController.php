@@ -17,7 +17,7 @@ class NoteController extends Controller
         $today = date("m/d/Y");
 
         if($note = Note::where('title', $today)->where('user_id', auth()->user()->id)->first()) {
-            return redirect()->route('updateNote', ['note' => $note])->with('Notice', "Existing note opened.");
+            return redirect()->route('open', ['note' => $note])->with('Notice', "Existing note opened.");
         } 
 
         return view('pages.new', ["today"=>$today]);
@@ -33,13 +33,13 @@ class NoteController extends Controller
 
     public function storeNote(Request $request) {
         $today = date("m/d/Y");
-        Note::create([
+        $note = Note::create([
             'user_id'   => auth()->user()->id,
             'title'     => $today,
             'content'   => $request->content
         ]);
         
-        return redirect('/dashboard')->with('Message', "Note saved.");
+        return redirect()->route('open', ['note' => $note->id])->with('Message', "Note saved.");
     }
 
     public function openNote(Note $note) {

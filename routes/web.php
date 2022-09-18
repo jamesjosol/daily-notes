@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/note/{note}', [NoteController::class, 'openNote'])->name('open')->middleware('isNoteOwner');
 
     Route::patch('/note/{note}', [NoteController::class, 'updateNote'])->name('updateNote');
+    
+    Route::get('/user/{user}', [UserController::class, 'edit'])->name('userEdit');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

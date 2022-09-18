@@ -1,6 +1,7 @@
 body {
     /* background-color: rgb(240, 239, 239); */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/webbg.jpg');
+    
 }
 
 @media only screen and (max-width: 980px) {
@@ -124,7 +125,7 @@ body {
     background-color: #292929;
 }
 
-.float{
+.float {
 	position:fixed;
 	width:60px;
 	height:60px;
@@ -136,9 +137,39 @@ body {
 	box-shadow: 2px 2px 3px #999;
 }
 
-.my-float{
+.my-float {
 	margin-top:6px;
     font-size: 1.7em;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s; /* Safari */
+}
+
+.my-float:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 40px rgb(0, 221, 228);
+}
+
+.my-float:active:after {
+    box-shadow: 0 0 0 0 rgb(0, 221, 228);
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    opacity: 1;
+    transition: 0s;
+}
+
+.my-float:active {
+    top: 1px;
 }
 
 .search-box-prepend, .search-box {
@@ -150,3 +181,13 @@ body {
     color: #dfdfdf;
     background-color: #4e4e4e;
 }
+
+
+.credits {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 1.1em;
+    color: #dfdfdf;
+}
+

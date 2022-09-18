@@ -11,4 +11,5 @@
         @endif
     </div>
 </div>
+<div class="font-weight-light credits"><i>Developed by: JP</i></div>
 @stop

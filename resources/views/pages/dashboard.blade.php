@@ -16,18 +16,20 @@
     </div>
     <h1 class="font-weight-light text-white">Recent Notes</h1>
     <div class="container p-2 rounded dashcon mb-3">
-        <div class="input-group mb-2 w-25 prepend">
+       <div class="col-md-3">
+        <div class="input-group mb-2 prepend">
             <div class="input-group-prepend">
                 <div class="input-group-text search-box-prepend"><i class="fa fa-search"></i></div>
             </div>
             <input type="text" class="form-control search-box" id="myInput" onkeyup="myFunction()" placeholder="Search...">
         </div>
+       </div>
 
         @if(!$notes->isEmpty())
         <table class="table table-hover table-lg table-dark" id="myTable">
             <thead class="theadstyle">
                 <th><h4>Date</h4></th>
-            </thead>
+            </thead> 
             <tbody>
                 @foreach($notes as $n)
                 <tr class="table-row"data-href="{{url("/note/$n->id")}}">
@@ -35,7 +37,7 @@
                 </tr>
                 @endforeach
                 @else
-                <tr> <h4>No notes recorded.</h4> </tr>
+                <tr> <h4  class="text-white ml-3">No notes recorded.</h4> </tr>
                 @endif
             </tbody>
         </table>  

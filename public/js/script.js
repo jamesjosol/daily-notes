@@ -23,3 +23,4 @@ function btnload(msg) {
     btn = document.getElementById('actionBtn');
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (typeof(msg) !== 'undefined' ? msg : 'Please wait...');
 }
+

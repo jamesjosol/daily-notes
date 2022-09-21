@@ -32,7 +32,7 @@
             </thead> 
             <tbody>
                 @foreach($notes as $n)
-                <tr class="table-row"data-href="{{url("/note/$n->id")}}">
+                <tr class="table-row" data-href="{{url("/note/$n->id")}}">
                     <td class="name">{{$n->title}}</td>
                 </tr>
                 @endforeach

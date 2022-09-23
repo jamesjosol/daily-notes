@@ -37,5 +37,9 @@ Route::group(['middleware' => 'auth'], function() {
     
     Route::get('/user/{user}', [UserController::class, 'edit'])->name('userEdit');
 
+    Route::get('/search', [NoteController::class, 'search'])->name('search');
+
+    // Route::get('/searchresult', [NoteController::class, 'search'])->name('searchresult');
+
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

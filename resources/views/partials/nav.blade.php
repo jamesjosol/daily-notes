@@ -18,6 +18,10 @@
                         <a class="nav-link" href="{{url('/dashboard')}}"><i class="fas fa-th-large"></i> Dashboard</a>
                     </li>
 
+                    <li class="nav-item {{ Request::is('search') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{url('/search')}}"><i class="fas fa-search"></i> Search</a>
+                    </li>
+
                     <li class="nav-item dropdown" style="cursor: pointer">
 						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/profile.png') }}" width="25" height="25" class="rounded-circle"> &nbsp;{{ auth()->user()->name }}</a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">

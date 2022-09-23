@@ -45,4 +45,18 @@ class NoteController extends Controller
     public function openNote(Note $note) {
         return view('pages.note', compact('note'));
     }
+    
+    public function search(Request $request){
+        $search = $request->input('search');
+
+        $notes = Note::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('content', 'LIKE', "%{$search}%")
+            ->where(function($query) {
+                $query->where('user_id', auth()->user()->id);
+            })
+            ->get();
+    
+        return view('pages.search', compact('notes'));
+    }
 }

@@ -21,7 +21,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text search-box-prepend"><i class="fa fa-search"></i></div>
             </div>
-            <input type="text" class="form-control search-box" id="myInput" onkeyup="myFunction()" placeholder="Search...">
+            <input type="text" class="form-control search-box" id="myInput" onkeyup="myFunction()" placeholder="example: 09/20/2022">
         </div>
        </div>
 

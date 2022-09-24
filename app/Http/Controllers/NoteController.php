@@ -49,13 +49,14 @@ class NoteController extends Controller
     public function search(Request $request){
         $search = $request->input('search');
 
-        $notes = Note::query()
-            ->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('content', 'LIKE', "%{$search}%")
-            ->where(function($query) {
-                $query->where('user_id', auth()->user()->id);
+        $notes = Note::where('user_id', auth()->user()->id)
+            ->where(function($query) use ($search)  {
+                $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('content', 'LIKE', "%{$search}%");
             })
+            ->orderBy('created_at', 'desc')
             ->get();
+        
     
         return view('pages.search', compact('notes'));
     }

@@ -29,11 +29,13 @@
         <table class="table table-hover table-lg table-dark" id="myTable">
             <thead class="theadstyle">
                 <th><h4>Date</h4></th>
+                <th>&nbsp;</th>
             </thead> 
             <tbody>
                 @foreach($notes as $n)
                 <tr class="table-row" data-href="{{url("/note/$n->id")}}">
                     <td class="name">{{$n->title}}</td>
+                    <td>{{date('l', strtotime($n->title))}}</td>
                 </tr>
                 @endforeach
                 @else

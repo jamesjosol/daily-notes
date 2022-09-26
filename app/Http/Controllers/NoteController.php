@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller
 {
@@ -56,8 +57,8 @@ class NoteController extends Controller
 
         $notes = Note::where('user_id', auth()->user()->id)
             ->where(function($query) use ($search)  {
-                $query->where('title', 'LIKE', "%{$search}%")
-                ->orWhere('content', 'LIKE', "%{$search}%");
+                $query->where(DB::raw('lower(title)'), 'like', '%' . strtolower($search) . '%')
+                ->orWhere(DB::raw('lower(content)'), 'like', '%' . strtolower($search) . '%');
             })
             ->orderBy('created_at', 'desc')
             ->get();

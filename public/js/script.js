@@ -23,9 +23,24 @@ function btnload(msg) {
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (typeof(msg) !== 'undefined' ? msg : 'Please wait...');
 }
 
-var auto_refresh = setInterval(function() { 
-    submitform();
-}, 60000);
+let inactivityTime = function () {
+    let time;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    function logout() {
+        submitform();
+    }
+    function resetTimer() {
+      clearTimeout(time);
+      time = setTimeout(logout, 60000)
+    }
+  };
+inactivityTime();
+
+// var auto_refresh = setInterval(function() { 
+//     submitform();
+// }, 60000);
 
 function submitform(){
     document.getElementById("noteForm").submit();

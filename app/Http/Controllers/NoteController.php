@@ -33,6 +33,11 @@ class NoteController extends Controller
 
     public function storeNote(Request $request) {
         $today = date("m/d/Y");
+        
+        if($note = Note::where('title', $today)->where('user_id', auth()->user()->id)->first()) {
+            return redirect()->route('dashboard')->with('Notice', "$today note already existed.");
+        } 
+
         $note = Note::create([
             'user_id'   => auth()->user()->id,
             'title'     => $today,

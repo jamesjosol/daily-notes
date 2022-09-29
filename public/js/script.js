@@ -29,11 +29,11 @@ let inactivityTime = function () {
     document.onmousemove = resetTimer;
     document.onkeypress = resetTimer;
     function logout() {
-        submitform();
+        document.getElementById('subBtn').click();
     }
     function resetTimer() {
       clearTimeout(time);
-      time = setTimeout(logout, 60000)
+      time = setTimeout(logout,60000);
     }
   };
 inactivityTime();
@@ -42,38 +42,39 @@ inactivityTime();
 //     submitform();
 // }, 60000);
 
-function submitform(){
-    document.getElementById("noteForm").submit();
-}
+// function submitform(){
+//     // document.getElementById("noteForm").submit();
+//     document.getElementByID('form-sub').click();
+// }
 
 let saveFile = () => {
     	
-        const content = document.getElementById('content');
-        
-        let data = content.value;
+    const content = document.getElementById('content');
+    
+    let data = content.value;
 
-        const textToBLOB = new Blob([data], { type: 'text/plain' });
-        const sFileName = document.getElementById('title_').value;
+    const textToBLOB = new Blob([data], { type: 'text/plain' });
+    const sFileName = document.getElementById('title_').value;
 
-        let newLink = document.createElement("a");
-        console.log(sFileName);
-        newLink.download = sFileName;
+    let newLink = document.createElement("a");
+    console.log(sFileName);
+    newLink.download = sFileName;
 
-        if (window.webkitURL != null) {
-            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-            toastr.options =
-            {
-                "closeButton" : true,
-                "progressBar" : true,
-                "positionClass": "toast-bottom-right",
-            }
-            toastr.success(sFileName + " successfully downloaded.", "", {"iconClass": 'custom-success'});
+    if (window.webkitURL != null) {
+        newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true,
+            "positionClass": "toast-bottom-right",
         }
-        else {
-            newLink.href = window.URL.createObjectURL(textToBLOB);
-            newLink.style.display = "none";
-            document.body.appendChild(newLink);
-        }
-
-        newLink.click(); 
+        toastr.success(sFileName + " successfully downloaded.", "", {"iconClass": 'custom-success'});
     }
+    else {
+        newLink.href = window.URL.createObjectURL(textToBLOB);
+        newLink.style.display = "none";
+        document.body.appendChild(newLink);
+    }
+
+    newLink.click(); 
+}

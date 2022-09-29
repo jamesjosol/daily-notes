@@ -6,7 +6,7 @@
 <div class="mt-5">
     {!! Form::open(['route' => ['updateNote', $note->id], 'method'=>'patch', 'id'=>'noteForm']) !!}
     <div class="float-right mt-2">
-        <button class="btn btn-primary float" type="submit">
+        <button class="btn btn-primary float subBtn" id="subBtn" type="button" onclick="subForm()">
             <i class="fa fa-save my-float" aria-hidden="true"></i>
         </button>
     </div>
@@ -31,5 +31,34 @@
     </div>
     {!! Form::close() !!}
 </div>
+<script>
+    function subForm (){
+        var url = '{{ "/note/$note->id" }}';
+        var message = '{{"Note $note->title"}}';
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: $('#noteForm').serialize(),
+            error:function(){
+                toastr.options =
+                {
+                    "closeButton" : true,
+                    "progressBar" : true,
+                    "positionClass": "toast-bottom-right",
+                }
+                toastr.success(message + " save failed.", "", {"iconClass": 'custom-error'});
+            },
+            success: function(){
+                toastr.options =
+                {
+                    "closeButton" : true,
+                    "progressBar" : true,
+                    "positionClass": "toast-bottom-right",
+                }
+                toastr.success(message + " saved.", "", {"iconClass": 'custom-success'});
+            }
+        });
+    }
+</script>
 
 @stop

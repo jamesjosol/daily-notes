@@ -178,12 +178,22 @@ body {
     top: 1px;
 }
 
-.search-box-prepend, .search-box {
+.search-box-prepend, .search-box, .dark-input-form {
   background-color: #292929;
   color: #dfdfdf;
 }
 
 .prepend input[type=text]:focus {
+    color: #dfdfdf;
+    background-color: #4e4e4e;
+}
+
+.dark-input-form-g input[type=text][disabled] {
+    color: #dfdfdf;
+    background-color: #4e4e4e;
+}
+
+.dark-input-form-g input[type=text]:focus, .dark-input-form-g input[type=password]:focus {
     color: #dfdfdf;
     background-color: #4e4e4e;
 }

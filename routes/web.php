@@ -34,12 +34,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/note/{note}', [NoteController::class, 'openNote'])->name('open')->middleware('isNoteOwner');
 
     Route::patch('/note/{note}', [NoteController::class, 'updateNote'])->name('updateNote');
-    
-    Route::get('/user/{user}', [UserController::class, 'edit'])->name('userEdit');
 
     Route::get('/search', [NoteController::class, 'search'])->name('search');
+    
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
-    // Route::get('/searchresult', [NoteController::class, 'search'])->name('searchresult');
+    Route::patch('/profile', [UserController::class, 'update'])->name('updateProfile');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

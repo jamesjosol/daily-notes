@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+
 
 class UserController extends Controller
 {
@@ -57,7 +60,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return redirect()->back()->with("Notice", "Under Development.");
+        // 
+    }
+
+    public function profile(User $user)
+    {
+        // return redirect()->back()->with("Notice", "Under Development.");
+        return view('pages.profile');
     }
 
     /**
@@ -69,7 +78,27 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // abort(503);
+
+
+        $user = User::find(auth()->user()->id);
+        if(empty($request->get('current_password')) && empty($request->get('new_password'))) {
+            $user->update($request->except('current_password'));
+            return redirect()->route('dashboard')->with('Message', "Profile has been successfully updated.");
+        } else {
+            $request->validate([
+                'current_password'         => 'string',
+                'new_password'             => 'required|string|min:5|required_with:password_confirmation|same:password_confirmation',
+                'password_confirmation'    => 'required|string|min:5',
+            ]);
+            if (Hash::check($request->current_password, $user->password)) {
+                $user->password = bcrypt($request->new_password);
+                $user->save();
+                return redirect()->route('dashboard')->with('Message', "Password has been successfully updated.");
+            }
+            throw ValidationException::withMessages(['current_password' => 'Current password is incorrect.']);
+        }
+       
     }
 
     /**

@@ -39,7 +39,7 @@
             url: url,
             type: 'post',
             data: $('#noteForm').serialize(),
-            error:function(){
+            error: function(){
                 toastr.options =
                 {
                     "closeButton" : true,

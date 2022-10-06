@@ -198,11 +198,23 @@ body {
     background-color: #4e4e4e;
 }
 
-
 .credits {
     position: absolute;
     bottom: 8px;
     right: 16px;
     font-size: 1.1em;
     color: #dfdfdf;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
 }

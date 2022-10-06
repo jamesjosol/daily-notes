@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'role'
     ];
 
     /**
@@ -42,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function notes() {
+        return $this->hasMany('App\Models\Note');
+    }
+
+    public function isAdmin() {
+        return auth()->user()->role == 1;
+    }
 }

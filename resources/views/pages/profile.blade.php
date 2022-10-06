@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group dark-input-form-g _auth @error('username') is-invalid @enderror">
                         {!! Form::label('username','<i class="fa fa-user"></i> Username',[],false) !!}
-                        {!! Form::text('username', auth()->user()->username, ['class'=>'form-control dark-input-form' .  ($errors->has('username') ? ' is-invalid' : null), 'disabled' => 'disabled']) !!}
+                        {!! Form::text('username', auth()->user()->username, ['class'=>'form-control dark-input-form not-allowed' .  ($errors->has('username') ? ' is-invalid' : null), 'disabled' => 'disabled']) !!}
                         <span class="errspan" id="errspan">{{ $errors->first('username') }}</span>
                     </div>
                     <div class="form-group dark-input-form-g _auth @error('current_password') is-invalid @enderror">

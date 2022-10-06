@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class isNoteOwner
+class isAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,11 @@ class isNoteOwner
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {  
-        if(auth()->user()->id == $request->note->user_id || auth()->user()->role == 1) {
+    {
+        if(auth()->check() && auth()->user()->role == 1) {
             return $next($request);
         }else {
-            return redirect()->route('dashboard');
+            return redirect()->route('login');
         }
-        // return $next($request);
     }
 }

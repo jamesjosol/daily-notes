@@ -14,6 +14,33 @@
                     <a class="nav-link" href="{{url('/')}}"><i class="fas fa-home"></i> Home</a>
                 </li> --}}
                 @if(Auth::check()) 
+                    @if(Auth::check() && auth()->user()->isAdmin()) 
+                    <li class="nav-item {{ Request::is('admin.dashboard') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{url('admin/dashboard')}}"><i class="fas fa-th-large"></i> Dashboard</a>
+                    </li>
+
+                    <li class="nav-item {{ Request::is('admin.search') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{url('admin/search')}}"><i class="fas fa-search"></i> Search</a>
+                    </li>
+
+                    <li class="nav-item {{ Request::is('admin.users') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{url('admin/users')}}"><i class="fas fa-users"></i> Users</a>
+                    </li>
+
+                    <li class="nav-item {{ Request::is('admin.notes') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{url('admin/notes')}}"><i class="fas fa-file-contract"></i> Notes</a>
+                    </li>
+
+                    <li class="nav-item dropdown" style="cursor: pointer">
+						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/profile.png') }}" width="25" height="25" class="rounded-circle"> &nbsp;<span class="badge badge-info">ADMIN</span> {{ auth()->user()->name }}</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+							<a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user-cog"></i> Profile Settings</a>
+							<a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+						</div>
+					</li>
+                    
+                    @else
+
                     <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('/dashboard')}}"><i class="fas fa-th-large"></i> Dashboard</a>
                     </li>
@@ -29,6 +56,7 @@
 							<a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
 						</div>
 					</li>
+                    @endif
                 @else
                     <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('/login')}}">Login</a>
@@ -37,6 +65,7 @@
                         <a class="nav-link" href="{{url('/register')}}">Register</a>
                     </li>
                 @endif
+
                 
             </ul>
         </div>

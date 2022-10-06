@@ -29,6 +29,13 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo() {
+        if(auth()->user()->role == 1) {
+            return route('admin.dashboard');
+        }else if(auth()->user()->role == 2) {
+            return route('dashboard');
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -54,9 +61,11 @@ class LoginController extends Controller
         if(!$user) {
             return redirect('/login')->with('Error', 'Username doesn\'t exist.');
         }
-
        
         if(auth()->attempt(['username' => $request->username, 'password' => $request->password], $remember)) {
+            if(auth()->user()->role == 1) {
+                return redirect()->route('admin.dashboard')->with("Message", "Welcome Admin $user->name");
+            }
             return redirect()->route('dashboard')->with("Message", "Welcome $user->name");
         }else{
             return redirect('/login')->with('Error', 'Invalid credentials.')->withInput($request->all());

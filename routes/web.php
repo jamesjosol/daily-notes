@@ -3,6 +3,7 @@
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,4 +43,27 @@ Route::group(['middleware' => 'auth'], function() {
     Route::patch('/profile', [UserController::class, 'update'])->name('updateProfile');
 
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix'=>'admin', 'middleware'=>'isAdmin'], function () {
+
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+        Route::get('/new', [NoteController::class, 'newNote'])->name('admin.new');
+
+        Route::post('/new', [NoteController::class, 'storeNote'])->name('admin.store');
+
+        Route::get('/note/{note}', [NoteController::class, 'openNote'])->name('admin.open');
+
+        Route::patch('/note/{note}', [NoteController::class, 'updateNote'])->name('admin.updateNote');
+
+        Route::get('/search', [NoteController::class, 'search'])->name('admin.search');
+
+        Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+
+        Route::get('/user/{user}', [AdminController::class, 'getUser'])->name('admin.user');
+
+        Route::get('/notes', [AdminController::class, 'notes'])->name('admin.notes');
+
+
+    });
 });

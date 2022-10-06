@@ -8,6 +8,8 @@
         <h1 class="font-weight-light mt-5">Welcome to Daily Notes</h1>
         @if (!Auth::check())
             <a href="{{ route('login') }}" class="btn index-btn mt-5 px-5 font-weight-light">Login</a>
+        @else
+            <a href="{{ auth()->user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="btn index-btn mt-5 px-5 font-weight-light">Dashboard</a>
         @endif
     </div>
 </div>

@@ -59,6 +59,14 @@
             }
         });
     }
-</script>
+
+    // $(document).bind("keyup keydown", function(e){
+    //     if(e.ctrlKey && e.which == 83) {
+    //         subForm();
+    //     }
+    // });
+
+
+    </script>
 
 @stop

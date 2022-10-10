@@ -188,12 +188,12 @@ body {
     background-color: #4e4e4e;
 }
 
-.dark-input-form-g input[type=text][disabled] {
+.dark-input-form-g input[type=text][disabled], .dark-input-form-g select:disabled {
     color: #dfdfdf;
     background-color: #4e4e4e;
 }
 
-.dark-input-form-g input[type=text]:focus, .dark-input-form-g input[type=password]:focus {
+.dark-input-form-g input[type=text]:focus, .dark-input-form-g input[type=password]:focus, .dark-input-form-g select:focus {
     color: #dfdfdf;
     background-color: #4e4e4e;
 }
@@ -217,4 +217,12 @@ body {
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th {
     border: none;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+}
+
+.modal-footer {
+    border-top: 0 none;
 }

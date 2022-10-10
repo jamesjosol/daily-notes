@@ -62,6 +62,10 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('/user/{user}', [AdminController::class, 'getUser'])->name('admin.user');
 
+        Route::patch('/user/{user}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+
+        Route::get('/user/{user}/notes', [AdminController::class, 'userNotes'])->name('admin.userNotes');
+
         Route::get('/notes', [AdminController::class, 'notes'])->name('admin.notes');
 
 

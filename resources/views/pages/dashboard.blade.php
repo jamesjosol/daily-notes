@@ -3,11 +3,6 @@
 
 @section('content')
 
-{{-- <div class="mt-5 text-center">
-    <div class="container text-white pt-5">
-        <h1 class="font-weight-light mt-5">Dashboard</h1>
-    </div>
-</div> --}}
 <div class="mt-5">
     <div class="float-right mt-2">
         <a class="btn btn-outline-primary" href="{{ route('new')}}">
@@ -39,7 +34,7 @@
                 </tr>
                 @endforeach
                 @else
-                <tr> <h4  class="text-white ml-3">No notes recorded.</h4> </tr>
+                <tr> <h4  class="text-white ml-3">No recent notes recorded.</h4> </tr>
                 @endif
             </tbody>
         </table>  

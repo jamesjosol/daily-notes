@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::get('/test', function () {
+    return view('pages.testpage');
+});
+
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {

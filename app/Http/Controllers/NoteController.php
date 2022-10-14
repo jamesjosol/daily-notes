@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\DB;
 class NoteController extends Controller
 {
     public function index() {
-        $notes = Note::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        $notes = Note::where('user_id', auth()->user()->id)
+        ->whereYear('created_at', Carbon::now()->year)
+        ->whereMonth('created_at', Carbon::now()->month)
+        ->orderBy('created_at', 'desc')->get();
+        
         return view('pages.dashboard', compact('notes'));
     }
 

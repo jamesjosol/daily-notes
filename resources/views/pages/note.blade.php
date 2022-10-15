@@ -39,14 +39,16 @@
             url: url,
             type: 'post',
             data: $('#noteForm').serialize(),
-            error: function(){
+            error: function(xhr, status, error){
                 toastr.options =
                 {
                     "closeButton" : true,
                     "progressBar" : true,
                     "positionClass": "toast-bottom-right",
                 }
-                toastr.success(message + " save failed.", "", {"iconClass": 'custom-error'});
+                toastr.success(
+                    message + " save failed.", "Error: " + xhr.status + " " + error, {"iconClass": 'custom-error'}
+                );
             },
             success: function(){
                 toastr.options =
